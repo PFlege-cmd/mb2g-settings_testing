@@ -33,7 +33,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.198</version>
+            <version>1.4.197</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -51,7 +51,7 @@
     -->
 
     <repositories>
-        <!--
+
         <repository>
             <id>oracle.foo.bar</id>
             <name>oracle-maven-repo</name>
@@ -62,7 +62,7 @@
                 <updatePolicy>always</updatePolicy>
             </releases>
         </repository>
-        -->
+
     <!-- Commented out as I use the nexus-group now!
         <repository>
             <id>nexus-release</id>
