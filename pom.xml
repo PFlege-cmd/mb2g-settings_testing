@@ -6,7 +6,7 @@
 
     <groupId>guru.springframework</groupId>
     <artifactId>mb2g-testing</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.2-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -17,6 +17,7 @@
     </properties>
 
     <dependencies>
+        <!--
         <dependency>
             <groupId>org.jboss.as.plugins</groupId>
             <artifactId>jboss-as-maven-plugin</artifactId>
@@ -28,9 +29,29 @@
             <artifactId>ojdbc8</artifactId>
             <version>18.3.0.0</version>
         </dependency>
+        -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.198</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
+    <!-- DISABLED FROM EARLIER ASSIGNMENT
+    <build>
+        <extensions>
+            <extension>
+                <groupId>io.packagecloud.maven.wagon</groupId>
+                <artifactId>maven-packagecloud-wagon</artifactId>
+                <version>0.0.6</version>
+            </extension>
+        </extensions>
+    </build>
+    -->
+
     <repositories>
+        <!--
         <repository>
             <id>oracle.foo.bar</id>
             <name>oracle-maven-repo</name>
@@ -41,6 +62,29 @@
                 <updatePolicy>always</updatePolicy>
             </releases>
         </repository>
+        -->
+    <!-- Commented out as I use the nexus-group now!
+        <repository>
+            <id>nexus-release</id>
+            <url>http://localhost:8081/repository/nexus-release/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>nexus-snapshots</id>
+            <url>http://localhost:8081/repository/nexus-snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+        -->
     </repositories>
     <pluginRepositories>
         <pluginRepository>
@@ -54,4 +98,25 @@
             </releases>
         </pluginRepository>
     </pluginRepositories>
+
+    <distributionManagement>
+        <!--DISABLED FROM EARLIER ASSIGNMENT
+        <repository>
+            <id>packagecloud.RELEASE</id>
+            <url>packagecloud+https://packagecloud.io/pflege/RELEASE</url>
+        </repository>
+        <snapshotRepository>
+            <id>packagecloud.SNAPSHOTS</id>
+            <url>packagecloud+https://packagecloud.io/pflege/SNAPSHOTS</url>
+        </snapshotRepository>
+        -->
+        <repository>
+            <id>nexus-release</id>
+            <url>http://localhost:8081/repository/nexus-release/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <url>http://localhost:8081/repository/nexus-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
