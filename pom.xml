@@ -38,7 +38,7 @@
         </dependency>
     </dependencies>
 
-    <!-- DISABLED FROM EARLIER ASSIGNMENT
+
     <build>
         <extensions>
             <extension>
@@ -48,7 +48,6 @@
             </extension>
         </extensions>
     </build>
-    -->
 
     <repositories>
 
@@ -99,8 +98,9 @@
         </pluginRepository>
     </pluginRepositories>
 
+    <!--
     <distributionManagement>
-        <!--DISABLED FROM EARLIER ASSIGNMENT
+        DISABLED FROM EARLIER ASSIGNMENT
         <repository>
             <id>packagecloud.RELEASE</id>
             <url>packagecloud+https://packagecloud.io/pflege/RELEASE</url>
@@ -110,6 +110,8 @@
             <url>packagecloud+https://packagecloud.io/pflege/SNAPSHOTS</url>
         </snapshotRepository>
         -->
+
+        <!--
         <repository>
             <id>nexus-release</id>
             <url>http://localhost:8081/repository/nexus-release/</url>
@@ -119,4 +121,39 @@
             <url>http://localhost:8081/repository/nexus-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
+    -->
+    <profiles>
+        <profile>
+            <id>nexus</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <distributionManagement>
+                <repository>
+                    <id>nexus-release</id>
+                    <url>http://localhost:8081/repository/nexus-release/</url>
+                </repository>
+                <snapshotRepository>
+                    <id>nexus-snapshots</id>
+                    <url>http://localhost:8081/repository/nexus-snapshots/</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+        <profile>
+            <id>packagecloud</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <distributionManagement>
+                <repository>
+                <id>packagecloud.RELEASE</id>
+                <url>packagecloud+https://packagecloud.io/pflege/RELEASE</url>
+            </repository>
+            <snapshotRepository>
+                <id>packagecloud.SNAPSHOTS</id>
+                <url>packagecloud+https://packagecloud.io/pflege/SNAPSHOTS</url>
+            </snapshotRepository>
+            </distributionManagement>
+        </profile>
+    </profiles>
 </project>
